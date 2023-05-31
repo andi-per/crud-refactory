@@ -5,7 +5,7 @@ app.use(express.json()); //untuk parsing req body format JSON
 
 const port = 8080;
 
-const emails = [
+let emails = [
   {
     id: '1',
     nama: 'andi',
@@ -66,6 +66,7 @@ app.delete('/email/:id', (req, res) => {
 
   //   untuk reset ID ke urutan yang benar setiap delete
   remainEmail.forEach((el, index) => (el.id = (index + 1).toString()));
+  emails = [...remainEmail];
   res.send({
     success: true,
     message: 'data is deleted successfully',
